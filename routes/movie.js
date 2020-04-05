@@ -4,6 +4,7 @@ const router = express.Router();
 //Models
 const Movie = require('../models/Movie');
 
+// Get All Movies
 router.get('/', (req, res) => {
   const promise = Movie.find({});
   
@@ -24,6 +25,7 @@ router.get('/top10', (req, res) => {
   });
 });
 
+// Get Movie by ID
 router.get('/:movie_id', (req, res, next) => {
   const promise = Movie.findById(req.params.movie_id);
 
@@ -37,6 +39,7 @@ router.get('/:movie_id', (req, res, next) => {
   });
 });
 
+// Update Movie by ID
 router.put('/:movie_id', (req, res, next) => {
   const promise = Movie.findByIdAndUpdate(
     req.params.movie_id, 
@@ -56,6 +59,7 @@ router.put('/:movie_id', (req, res, next) => {
   });
 });
 
+// Delete Movie by ID
 router.delete('/:movie_id', (req, res, next) => {
   const promise = Movie.findByIdAndRemove(req.params.movie_id);
 
@@ -69,6 +73,7 @@ router.delete('/:movie_id', (req, res, next) => {
   });
 });
 
+// Add New Movie
 router.post('/', (req, res, next) => {
   //const { title, imdb_score, category, country, year} = req.body;
 
