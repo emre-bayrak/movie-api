@@ -9,8 +9,7 @@ let token, directorId;
 
 describe('/api/directors test', () => {
     before((done) => {
-        this.timeout(500);
-        setTimeout(done, 300);
+        this.timeout(10000);
         chai.request(server)
             .post('/authenticate')
             .send({ username: 'ebayrak', password: 'abcd1234'})
