@@ -80,4 +80,33 @@ describe('/api/movies test', () => {
                 });
         });
     });
+
+    describe('/PUT/:director_id movie', () => {
+        it('It should UPDATE a movie given by ID', (done) => {
+            const movie = {
+                title: '93creative',
+                director_id: '5e8a4feb529515248ce688b1',
+                category: 'Crime',
+                country: 'Cyprus',
+                year: 1989,
+                imdb_score: 5
+            };
+
+            chai.request(server)
+                .put('/api/movies/'+ movieId)
+                .send(movie)
+                .set('x-access-token', token)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('title').eql(movie.title);
+                    res.body.should.have.property('director_id').eql(movie.director_id);
+                    res.body.should.have.property('category').eql(movie.category);
+                    res.body.should.have.property('country').eql(movie.country);
+                    res.body.should.have.property('year').eql(movie.year);
+                    res.body.should.have.property('imdb_score').eql(movie.imdb_score);
+                    done();
+                });
+        });
+    });
 });
