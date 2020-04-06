@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const bcrypt = require('bcryptjs');
+
 //Models
 const User = require('../models/User');
 
@@ -8,7 +10,7 @@ const User = require('../models/User');
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' });
 });
-
+// Create new user
 router.post('/register', (req, res, next) => {
   const { username, password} = req.body;
 
