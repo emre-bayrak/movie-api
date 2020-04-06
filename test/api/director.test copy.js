@@ -95,11 +95,11 @@ describe('/api/directors test', () => {
                 });
         });
     });
-/*
-    describe('/DELETE/:movie_id movie', () => {
-        it('It should DELETE a movie by the given ID', (done) => {
+
+    describe('/DELETE/:director_id movie', () => {
+        it('It should DELETE a director by the given ID', (done) => {
             chai.request(server)
-                .delete('/api/movies/'+ movieId)
+                .delete('/api/directors/'+ directorId)
                 .set('x-access-token', token)
                 .end((err, res) => {
                     res.should.have.status(200);
@@ -109,5 +109,5 @@ describe('/api/directors test', () => {
                 });
         });
     });
-    */
+
 });
