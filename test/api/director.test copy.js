@@ -54,27 +54,25 @@ describe('/api/directors test', () => {
                 });
         });
     });
-/*
-    describe('/GET/:movie_id movie', () => {
-        it('It should GET a movie by the given ID', (done) => {
+
+    describe('/GET/:director_id director', () => {
+        it('It should GET a director by the given ID', (done) => {
             chai.request(server)
-                .get('/api/movies/'+ movieId)
+                .get('/api/directors/'+ directorId)
                 .set('x-access-token', token)
                 .end((err, res) => {
                     res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('title');
-                    res.body.should.have.property('director_id');
-                    res.body.should.have.property('category');
-                    res.body.should.have.property('country');
-                    res.body.should.have.property('year');
-                    res.body.should.have.property('imdb_score');
-                    res.body.should.have.property('_id').eql(movieId);
+                    res.body.should.be.a('array');
+                    res.body[0].should.have.property('firstName');
+                    res.body[0].should.have.property('lastName');
+                    res.body[0].should.have.property('movies');
+                    res.body[0].movies.should.be.a('array');
+                    res.body[0].should.have.property('_id').eql(directorId);
                     done();
                 });
         });
     });
-
+/*
     describe('/PUT/:movie_id movie', () => {
         it('It should UPDATE a movie by the given ID', (done) => {
             const movie = {
