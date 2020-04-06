@@ -35,7 +35,7 @@ router.post('/register', (req, res, next) => {
 });
 
 router.post('/authenticate', (req, res) => {
-  const { username, password} = req.body;
+  const { username, password } = req.body;
 
   User.findOne({
     username
