@@ -51,7 +51,7 @@ router.get('/', (req, res) => {
     res.json(err);
   });
 });
-
+// Get Director By ID
 router.get('/:director_id', (req, res) => {
   const promise = Director.aggregate([
     {
@@ -102,7 +102,7 @@ router.get('/:director_id', (req, res) => {
     res.json(err);
   });
 });
-
+// Add New Director
 router.post('/', (req, res, next) => {
   const director = new Director(req.body);
   const promise = director.save();
@@ -114,7 +114,7 @@ router.post('/', (req, res, next) => {
   });
 
 });
-
+// Update Director By ID
 router.put('/:director_id', (req, res, next) => {
   const promise = Director.findByIdAndUpdate(
     req.params.director_id, 
@@ -133,7 +133,7 @@ router.put('/:director_id', (req, res, next) => {
     res.json(err);
   });
 });
-
+// Delete Director By ID
 router.delete('/:director_id', (req, res, next) => {
   const promise = Director.findByIdAndRemove(req.params.director_id);
 
