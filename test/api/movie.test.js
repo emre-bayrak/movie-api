@@ -61,7 +61,7 @@ describe('/api/movies test', () => {
         });
     });
 
-    describe('/GET/:director_id movie', () => {
+    describe('/GET/:movie_id movie', () => {
         it('It should GET a movie by the given ID', (done) => {
             chai.request(server)
                 .get('/api/movies/'+ movieId)
@@ -81,8 +81,8 @@ describe('/api/movies test', () => {
         });
     });
 
-    describe('/PUT/:director_id movie', () => {
-        it('It should UPDATE a movie given by ID', (done) => {
+    describe('/PUT/:movie_id movie', () => {
+        it('It should UPDATE a movie by the given ID', (done) => {
             const movie = {
                 title: '93creative',
                 director_id: '5e8a4feb529515248ce688b1',
@@ -105,6 +105,20 @@ describe('/api/movies test', () => {
                     res.body.should.have.property('country').eql(movie.country);
                     res.body.should.have.property('year').eql(movie.year);
                     res.body.should.have.property('imdb_score').eql(movie.imdb_score);
+                    done();
+                });
+        });
+    });
+
+    describe('/DELETE/:movie_id movie', () => {
+        it('It should DELETE a movie by the given ID', (done) => {
+            chai.request(server)
+                .delete('/api/movies/'+ movieId)
+                .set('x-access-token', token)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('status').eql(1);
                     done();
                 });
         });
