@@ -73,7 +73,7 @@ describe('/api/directors test', () => {
         });
     });
 
-    describe('/PUT/:director_id movie', () => {
+    describe('/PUT/:director_id director', () => {
         it('It should UPDATE a director by the given ID', (done) => {
             const director = {
                 firstName: 'Emreler',
@@ -96,7 +96,7 @@ describe('/api/directors test', () => {
         });
     });
 
-    describe('/DELETE/:director_id movie', () => {
+    describe('/DELETE/:director_id director', () => {
         it('It should DELETE a director by the given ID', (done) => {
             chai.request(server)
                 .delete('/api/directors/'+ directorId)
