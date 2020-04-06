@@ -72,36 +72,30 @@ describe('/api/directors test', () => {
                 });
         });
     });
-/*
-    describe('/PUT/:movie_id movie', () => {
-        it('It should UPDATE a movie by the given ID', (done) => {
-            const movie = {
-                title: '93creative',
-                director_id: '5e8a4feb529515248ce688b1',
-                category: 'Crime',
-                country: 'Cyprus',
-                year: 1989,
-                imdb_score: 5
+
+    describe('/PUT/:director_id movie', () => {
+        it('It should UPDATE a director by the given ID', (done) => {
+            const director = {
+                firstName: 'Emreler',
+                lastName: 'Bayraklar',
+                bio: '11111I was born in Istanbul. I came to UK in 2017.I was born in Istanbul. I came to UK in 2017.I was born in Istanbul. I came to UK in 2017.'
             };
 
             chai.request(server)
-                .put('/api/movies/'+ movieId)
-                .send(movie)
+                .put('/api/directors/'+ directorId)
+                .send(director)
                 .set('x-access-token', token)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
-                    res.body.should.have.property('title').eql(movie.title);
-                    res.body.should.have.property('director_id').eql(movie.director_id);
-                    res.body.should.have.property('category').eql(movie.category);
-                    res.body.should.have.property('country').eql(movie.country);
-                    res.body.should.have.property('year').eql(movie.year);
-                    res.body.should.have.property('imdb_score').eql(movie.imdb_score);
+                    res.body.should.have.property('firstName').eql(director.firstName);
+                    res.body.should.have.property('lastName').eql(director.lastName);
+                    res.body.should.have.property('bio').eql(director.bio);
                     done();
                 });
         });
     });
-
+/*
     describe('/DELETE/:movie_id movie', () => {
         it('It should DELETE a movie by the given ID', (done) => {
             chai.request(server)
